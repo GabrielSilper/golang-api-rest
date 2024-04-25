@@ -21,5 +21,6 @@ func HandleArtistsRequests() {
 	router.HandleFunc("/api/artists", artistController.GetAll).Methods(http.MethodGet)
 	router.HandleFunc("/api/artists/{id}", artistController.GetById).Methods(http.MethodGet)
 	router.HandleFunc("/api/artists", artistController.Create).Methods(http.MethodPost)
+	router.HandleFunc("/api/artists/{id}", artistController.Update).Methods(http.MethodPut)
 	router.HandleFunc("/api/artists/{id}", artistController.Delete).Methods(http.MethodDelete)
 }

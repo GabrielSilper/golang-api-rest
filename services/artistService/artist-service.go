@@ -24,3 +24,11 @@ func Create(newArtist *models.Artist) {
 func Delete(id string) {
 	database.DB.Delete(&models.Artist{}, id)
 }
+
+func Update(id string, updatedArtist models.Artist) models.Artist {
+	artist := FindById(id)
+	artist.Name = updatedArtist.Name
+	artist.Nationality = updatedArtist.Nationality
+	database.DB.Save(&artist)
+	return artist
+}

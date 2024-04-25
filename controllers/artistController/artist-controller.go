@@ -31,6 +31,15 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(newArtist)
 }
 
+func Update(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	updatedArtist := artistService.Update(id, decoderArtist(r.Body))
+
+	json.NewEncoder(w).Encode(updatedArtist)
+}
+
 func Delete(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]

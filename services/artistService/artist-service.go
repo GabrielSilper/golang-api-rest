@@ -16,3 +16,11 @@ func FindById(id string) models.Artist {
 	database.DB.First(&artist, id)
 	return artist
 }
+
+func Create(newArtist *models.Artist) {
+	database.DB.Create(newArtist)
+}
+
+func Delete(id string) {
+	database.DB.Delete(&models.Artist{}, id)
+}
